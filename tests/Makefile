@@ -1,0 +1,21 @@
+#################################################################################
+##============================  SAMPLE MAKE FILE  =============================##
+##  Hail to the QAs!                                                           ##
+#################################################################################
+
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+
+# file paths
+SRC_DIR = ..
+UNITY_SRC_DIR = ./Unity-2.6.1/src
+UNITY_O = $(UNITY_SRC_DIR)/unity.c
+
+# compile and run just the desired file and its test
+%:
+	$(CC) test_$(*).c $(SRC_DIR)/$(*).c $(UNITY_O)
+	./a.out
+
+clean:
+	rm -f a.out
+.PHONY: clean
