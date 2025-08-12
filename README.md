@@ -1,6 +1,8 @@
 # C UNIT TEST BOILERPLATE
 Unit test boilerplate using C Unity.
 
+_do it right once so you don't have to do it twice  ;)_
+
 ## To do
 
 - Include check for target file dependencies;
