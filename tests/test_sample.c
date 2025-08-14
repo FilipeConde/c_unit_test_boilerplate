@@ -31,6 +31,21 @@ void	two_strings_should_be_equal(void)
 TEST_ASSERT_EQUAL_STRING("TEST", "TEST");
 }
 
+void	test_printf(void)
+{
+	char	*output;
+	char	s[] = "Ops!";
+
+	freopen("output.txt", "w+", stdout);
+	printf(s);
+	fflush(stdout);
+	freopen("/dev/tty", "w", stdout);
+	output = read_file_to_str("output.txt");
+	TEST_ASSERT_EQUAL_STRING_MESSAGE("Ops!", output, "Error!");
+	free(output);
+	remove("output.txt");
+}
+
 void	two_strings_should_be_equal_again(void)
 {
 	char msg[] = "Well, it seems like a failed test!";
@@ -42,5 +57,6 @@ int	main(void)
 UNITY_BEGIN();
 RUN_TEST(two_strings_should_be_equal);
 RUN_TEST(two_strings_should_be_equal_again);
+RUN_TEST(test_printf);
 return UNITY_END();
 }
