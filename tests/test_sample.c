@@ -8,6 +8,7 @@
 
 // fill with your header files
 #include "./Unity-2.6.1/src/unity.h"
+#include "./utils/utils.h"
 
 // A sample file to be this test target
 // #include "../sample.c"
@@ -35,11 +36,9 @@ void	test_printf(void)
 {
 	char	*output;
 	char	s[] = "Ops!";
+	int		count = 0;
 
-	freopen("output.txt", "w+", stdout);
-	printf(s);
-	fflush(stdout);
-	freopen("/dev/tty", "w", stdout);
+	CAPTURE_PRINT("output.txt", count, printf, s);
 	output = read_file_to_str("output.txt");
 	TEST_ASSERT_EQUAL_STRING_MESSAGE("Ops!", output, "Error!");
 	free(output);
